@@ -1,0 +1,53 @@
+<div class="row">
+
+  <form name="todoForm" ng-submit="vm.addTodo(todoForm)">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" ng-model="vm.todo.name"
+               class="form-control" id="name"
+               name="name"
+               required
+               placeholder="Nome da tarefa...">
+      </div>
+      {{todoForm.name.$error}}
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"
+                 ng-model="vm.todo.finished">
+          Finalizado
+        </label>
+      </div>
+      <button type="submit"
+              class="btn btn-success"
+      >
+        Adicionar
+      </button>
+    </div>
+  </form>
+
+  <hr>
+
+  <div class="col-lg-4">
+    <div class="form-group">
+      <input type="text" placeholder="filtar..."
+             class="form-control"
+             ng-model="vm.filterModel">
+    </div>
+  </div>
+
+  <div class="col-lg-4"
+       ng-repeat="todo in vm.todos | filter:vm.filterModel">
+    <span ng-bind="todo.name"></span>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"
+               ng-change="vm.todoChanged()"
+               ng-model="todo.finished">
+        Finalizado
+      </label>
+    </div>
+    <a class="btn btn-warning" ng-click="vm.deleteTodo(todo, $index)">Deletar</a>
+  </div>
+
+</div>

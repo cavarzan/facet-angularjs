@@ -1,0 +1,34 @@
+<div class="container">
+
+  <div class="form-control">
+
+    <label>Nome</label>
+    <input change-color name="vm.inputModel" type="text" ng-model="vm.inputModel">
+
+  </div>
+
+  <button type="button" class="btn btn-block"
+          ng-click="vm.click()" >OK
+  </button>
+  <div class="col-lg-4">
+    <h1 ng-bind="vm.inputModel"></h1>
+    <h1
+      ng-class="{'label-success' : vm.user.name === 'Deividi'}"
+      ng-bind="vm.user.name"></h1>
+  </div>
+
+  <p ng-bind="vm.time"></p>
+
+
+  <p ng-hide="vm.inputModel === 'html'">HIDE!</p>
+  <button
+    ng-show="vm.inputModel === 'html'"
+    class="btn" type="button"
+    ui-sref="list">Lista (Via HTML)</button>
+
+  <button
+    ng-disabled="vm.inputModel === 'html'"
+    class="btn" ng-click="vm.navigateToList()">Lista (Via JS)</button>
+
+
+</div>
