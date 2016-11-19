@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h1 class="center">
+    Busca de Usuários GitHub
+  </h1>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <form class="form-inline"
+        ng-submit="vm.search()"
+      >
+        <span>
+            <input type="text"
+              placeholder="Digite o usuário..."
+              ng-model="vm.query"
+              class="form-control input-md"
+            />
+            <button type="submit" class="btn btn-success">
+              Buscar </button>
+        </span>
+      </form>
+    </div>
+
+  </div>
+
+
+    <div ng-repeat="user in vm.users">
+      <div class="row" ui-sref="repositories({login : user.login})" >
+        <div class="col-md-4">
+            <img ng-src="{{user.avatar_url}}" class="thumbnail" />
+        </div>
+        <div class="col-md-8">
+            <p ng-bind="user.login"></p>
+        </div>
+      </div>
+</div>
